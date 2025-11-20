@@ -1,46 +1,78 @@
-# Ex 4(C) B-Tree
-
+# Ex19 Palindrome Check Using Deque
+## DATE: 17-11-2025
 ## AIM:
-To write a C function to delete an element in a B Tree.
+To design a program that checks whether a given message is a palindrome by removing all non-alphanumeric characters, converting all characters to lowercase, and using a deque data structure for comparison.
+
+
 ## Algorithm
-1.	Start
-2.	Try to delete the item from the node using delValFromNode. If not found, print "Not present" and return.
-3.	If the node's count is 0 after deletion, set tmp to the current node and update myNode to its first linker child.
-4.	Free the tmp node.
-5.	Update the global root to the new myNode.
-6.	Return after deletion.
-7.	End
- 
+1. Start the program.
+2. Read an input string from the user.
+3. Remove all non-alphanumeric characters from the string.
+4. Convert all characters to lowercase for uniform comparison.
+5. Create a deque (double-ended queue).
+6. Insert each character of the cleaned string into the deque.
+7. While the deque has more than one element:
+   - Remove one character from the front and one from the rear.
+   - Compare both characters.
+   - If they are not equal, the string is not a palindrome.
+8. If all pairs match, the string is a palindrome.
+9. Display the result.
 
 ## Program:
-```
+```java
 /*
-Program to write a C function to delete an element in a B Tree
-Developed by: GANESH PRABHU J
-RegisterNumber: 212223220023 
+Program to checks whether a given message is a palindrome by removing all non-alphanumeric characters.
+Developed by: HEMA LOKITHA P
+Register Number: 212223110014
 */
-/*struct BTreeNode{
-int item[MAX+1], count;
-struct BTreeNode*linker[MAX+1];
-};
 
-struct BTreeNode*root;*/
-voiddelete(int item, struct BTreeNode*myNode) { struct BTreeNode*tmp; if(!delValFromNode(item, myNode)){ printf("Not present\n");
-return;
-} else{
-if(myNode->count ==0) { tmp = myNode;
-myNode=myNode->linker[0]; free(tmp);
-}
-}
-root=myNode; return;
+import java.util.*;
+
+public class PalindromeChecker {
+    
+    public static boolean isPalindrome(String message) {
+        // Convert to lowercase and remove non-alphanumeric characters
+        message = message.toLowerCase().replaceAll("[^a-z0-9]", "");
+        
+        Deque<Character> deque = new ArrayDeque<>();
+        
+        // Add all characters to the deque
+        for (char c : message.toCharArray()) {
+            deque.addLast(c);
+        }
+        
+        // Compare characters from both ends
+        while (deque.size() > 1) {
+            if (deque.pollFirst() != deque.pollLast()) {
+                return false;  // Mismatch found
+            }
+        }
+        
+        return true;  // All characters matched
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        //System.out.println("Enter a message:");
+        String input = scanner.nextLine();
+
+        if (isPalindrome(input)) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not a palindrome");
+        }
+
+        scanner.close();
+    }
 }
 
 ```
 
 ## Output:
+<img width="384" height="136" alt="image" src="https://github.com/user-attachments/assets/ff3377d2-a5f8-40c7-944d-274f491e7222" />
 
-![image](https://github.com/user-attachments/assets/ed885885-462c-41c6-8a86-979346c5d11f)
 
 
 ## Result:
-Thus, the C function to delete an element in a B Tree is implemented successfully.
+The program successfully removes all non-alphanumeric characters, converts the text to lowercase, and uses a deque to efficiently compare characters from both ends. Hence, it determines whether the string is a palindrome.
