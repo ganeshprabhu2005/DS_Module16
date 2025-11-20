@@ -1,52 +1,61 @@
-# Ex 4(B) AVL Tree – Rotation
-## DATE: 21/08/2025
+
+# Ex17 Reversing a String Using Stack Data Structure
+## DATE: 17-11-2025
 ## AIM:
-To write a C function to perform right rotation in an AVL Tree.
+To write a Java program that reverses an input string using a stack, without using built-in reverse functions.
 
 ## Algorithm
-1.	Start
-2.	Set y to the left child of x.
-3.	Set the left child of x to be the right child of y.
-4.	Set the right child of y to be x.
-5.	Update the height of x and y.
-6.	Return y as the new root after rotation.
-7.	End
- 
+1. Start the program.
+2. Read the input string from the user.
+3. Create an empty stack of characters.
+4. Traverse the string and push each character onto the stack.
+5. Pop each character from the stack and append it to a new string — this gives the reversed string.
+6. Display the reversed string.
+7. Stop the program.
 
 ## Program:
-```
+```java
 /*
-Program to perform right rotation in AVL Tree
+Program to reverses an input string using a stack
 Developed by: GANESH PRABHU J
-RegisterNumber:  212223220023
+Register Number: 212223220023
 */
 
-/*
-typedefstruct node
-{
-int data;
-struct node*left,*right; int ht;
-}node;
-node *insert(node*,int);
-//node*Delete(node*,int); void preorder(node*);
-//void inorder(node*); int height( node *); node*rotateright(node*); node*rotateleft(node*); node *RR(node *); node *LL(node *); node *LR(node *);
-node*RL(node*);
-*/
-node * rotateright(node *x)
-{
-node *y; y=x->left;
-x->left=y->right; y->right=x;
- 
-x->ht=height(x); y->ht=height(y); return(y);
+import java.util.Scanner;
+import java.util.Stack;
+
+public class ReverseStringWithStack {
+
+    public static String reverseString(String input) {
+         Stack<Character> stack=new Stack<>();
+        for(char ch:input.toCharArray())
+        {
+            stack.push(ch);
+        }
+        StringBuilder rev=new StringBuilder();
+        while(!stack.isEmpty())
+        {
+            rev.append(stack.pop());
+        }
+        return rev.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        String reversed = reverseString(input);
+        System.out.println(reversed);
+
+        scanner.close();
+    }
 }
-
 
 ```
 
 ## Output:
+<img width="365" height="132" alt="image" src="https://github.com/user-attachments/assets/8ed4aa0c-0a74-4c41-bb99-e382b72198d7" />
 
-![image](https://github.com/user-attachments/assets/7bb89eba-4298-4074-ac3a-803a9d822b45)
 
 
 ## Result:
-Thus, the function to perform right rotation in an AVL Tree is implemented successfully.
+Thus, the program successfully reverses the given string using a stack without relying on built-in reverse functions.
