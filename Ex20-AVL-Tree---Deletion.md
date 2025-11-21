@@ -4,7 +4,7 @@
 To design a program that sorts a given array of integers in ascending order without using built-in sorting functions, achieving O(n log n) time complexity and minimal space usage.
 
 ## Algorithm
-1. Start the program.
+1. Start the program. 
 2. Define a method `mergeSort()` that divides the array into two halves recursively until single elements remain.
 3. Define a method `merge()` that merges two sorted halves into a single sorted array.
 4. In the `main()` method:
